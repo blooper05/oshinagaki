@@ -1,5 +1,5 @@
 ### AWS CLI ###
-remote_file '/etc/profile.d/aws_cli.sh' do
+remote_file '/etc/profile.d/aws-cli.conf.sh' do
   mode '0775'
 end
 
@@ -7,6 +7,6 @@ end
 package 'git'
 
 ### Less ###
-remote_file '/etc/profile.d/less.sh' do
+remote_file '/etc/profile.d/less.conf.sh' do
   mode '0775'
 end
