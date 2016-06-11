@@ -20,6 +20,7 @@ GEM
       ast (~> 2.2)
     powerpack (0.1.1)
     rainbow (2.1.0)
+    rake (11.1.2)
     rspec (3.4.0)
       rspec-core (~> 3.4.0)
       rspec-expectations (~> 3.4.0)
@@ -63,6 +64,7 @@ PLATFORMS
 
 DEPENDENCIES
   itamae
+  rake
   rubocop
   serverspec
 
