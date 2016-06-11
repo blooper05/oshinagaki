@@ -1,2 +1,8 @@
-include_recipe '../cookbooks/base/default.rb'
-include_recipe '../cookbooks/nginx/default.rb'
+COOKBOOKS = %w(
+  base
+  nginx
+).freeze
+
+COOKBOOKS.each do |cookbook|
+  include_recipe "../cookbooks/#{cookbook}/default.rb"
+end
