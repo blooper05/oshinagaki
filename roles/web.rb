@@ -1,1 +1,1 @@
-include_recipe '../cookbooks/common/default.rb'
+include_recipe '../cookbooks/base/default.rb'
