@@ -1,27 +1,20 @@
 require 'rake'
 require 'rspec/core/rake_task'
+require 'yaml'
 
-task spec: 'spec:all'
-task default: :spec
+properties = YAML.load_file('properties.yml')
 
-namespace :spec do
-  targets = []
-  Dir.glob('./spec/*').each do |dir|
-    next unless File.directory?(dir)
-    target = File.basename(dir)
-    target = "_#{target}" if target == 'default'
-    targets << target
-  end
+desc 'Run serverspec to all hosts'
+task serverspec: 'serverspec:all'
 
-  task all: targets
-  task default: :all
+namespace :serverspec do
+  task all: properties.keys.map { |host| 'serverspec:' + host }
 
-  targets.each do |target|
-    original_target = target == '_default' ? target[1..-1] : target
-    desc "Run serverspec tests to #{original_target}"
-    RSpec::Core::RakeTask.new(target.to_sym) do |t|
-      ENV['TARGET_HOST'] = original_target
-      t.pattern = "spec/#{original_target}/*_spec.rb"
+  properties.keys.each do |host|
+    desc "Run serverspec to #{host}"
+    RSpec::Core::RakeTask.new(host.split('.')[0].to_sym) do |t|
+      ENV['TARGET_HOST'] = host
+      t.pattern = 'spec/{' + properties[host][:roles].join(',') + '}/*_spec.rb'
     end
   end
 end
