@@ -16,3 +16,33 @@ end
 git "#{RBENV_PATH}/plugins/ruby-build" do
   repository 'https://github.com/sstephenson/ruby-build.git'
 end
+
+### dependencies ###
+DEPENDENCIES = %w(
+  bzip2
+  gcc
+  gdbm-devel
+  libffi-devel
+  libyaml-devel
+  ncurses-devel
+  openssl-devel
+  readline-devel
+  zlib-devel
+).freeze
+
+DEPENDENCIES.each do |dependency|
+  package dependency
+end
+
+### Ruby ###
+VERSION = '2.3.1'.freeze
+
+execute 'rbenv install' do
+  command "source #{RBENV_CONF} && rbenv install #{VERSION}"
+  not_if "source #{RBENV_CONF} && rbenv versions | grep #{VERSION}"
+end
+
+execute 'rbenv global' do
+  command "source #{RBENV_CONF} && rbenv global #{VERSION}"
+  not_if "source #{RBENV_CONF} && rbenv version | grep #{VERSION}"
+end
