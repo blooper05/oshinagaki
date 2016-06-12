@@ -22,6 +22,11 @@ git "#{RBENV_PATH}/plugins/rbenv-binstubs" do
   repository 'https://github.com/ianheggie/rbenv-binstubs.git'
 end
 
+### rbenv-default-gems ###
+git "#{RBENV_PATH}/plugins/rbenv-default-gems" do
+  repository 'https://github.com/rbenv/rbenv-default-gems.git'
+end
+
 ### dependencies ###
 DEPENDENCIES = %w(
   bzip2
