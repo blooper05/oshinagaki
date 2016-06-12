@@ -1,6 +1,7 @@
 COOKBOOKS = %w(
   base
   nginx
+  ruby
 ).freeze
 
 COOKBOOKS.each do |cookbook|
