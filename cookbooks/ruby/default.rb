@@ -17,6 +17,11 @@ git "#{RBENV_PATH}/plugins/ruby-build" do
   repository 'https://github.com/sstephenson/ruby-build.git'
 end
 
+### rbenv-binstubs ###
+git "#{RBENV_PATH}/plugins/rbenv-binstubs" do
+  repository 'https://github.com/ianheggie/rbenv-binstubs.git'
+end
+
 ### dependencies ###
 DEPENDENCIES = %w(
   bzip2
