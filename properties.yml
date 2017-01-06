@@ -1,3 +1,4 @@
 oshinagaki:
   :roles:
+    - transcoder
     - web
