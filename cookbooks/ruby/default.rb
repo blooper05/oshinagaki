@@ -45,7 +45,7 @@ DEPENDENCIES.each do |dependency|
 end
 
 ### Ruby ###
-VERSION = '2.3.1'.freeze
+VERSION = '2.4.0'.freeze
 
 execute 'rbenv install' do
   command "source #{RBENV_CONF} && rbenv install #{VERSION}"
