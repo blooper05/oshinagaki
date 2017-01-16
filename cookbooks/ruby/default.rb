@@ -17,11 +17,6 @@ git "#{RBENV_ROOT}/plugins/ruby-build" do
   repository 'https://github.com/sstephenson/ruby-build.git'
 end
 
-### rbenv-binstubs ###
-git "#{RBENV_ROOT}/plugins/rbenv-binstubs" do
-  repository 'https://github.com/ianheggie/rbenv-binstubs.git'
-end
-
 ### rbenv-default-gems ###
 git "#{RBENV_ROOT}/plugins/rbenv-default-gems" do
   repository 'https://github.com/rbenv/rbenv-default-gems.git'
