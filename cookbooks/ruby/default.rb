@@ -1,8 +1,8 @@
 ### rbenv ###
-RBENV_PATH = '/usr/local/rbenv'.freeze
+RBENV_ROOT = '/usr/local/rbenv'.freeze
 RBENV_CONF = '/etc/profile.d/rbenv.conf.sh'.freeze
 
-git RBENV_PATH do
+git RBENV_ROOT do
   repository 'https://github.com/rbenv/rbenv.git'
 end
 
@@ -13,17 +13,17 @@ remote_file RBENV_CONF do
 end
 
 ### ruby-build ###
-git "#{RBENV_PATH}/plugins/ruby-build" do
+git "#{RBENV_ROOT}/plugins/ruby-build" do
   repository 'https://github.com/sstephenson/ruby-build.git'
 end
 
 ### rbenv-binstubs ###
-git "#{RBENV_PATH}/plugins/rbenv-binstubs" do
+git "#{RBENV_ROOT}/plugins/rbenv-binstubs" do
   repository 'https://github.com/ianheggie/rbenv-binstubs.git'
 end
 
 ### rbenv-default-gems ###
-git "#{RBENV_PATH}/plugins/rbenv-default-gems" do
+git "#{RBENV_ROOT}/plugins/rbenv-default-gems" do
   repository 'https://github.com/rbenv/rbenv-default-gems.git'
 end
 
