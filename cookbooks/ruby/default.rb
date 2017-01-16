@@ -22,6 +22,12 @@ git "#{RBENV_ROOT}/plugins/rbenv-default-gems" do
   repository 'https://github.com/rbenv/rbenv-default-gems.git'
 end
 
+remote_file "#{RBENV_ROOT}/default-gems" do
+  owner 'root'
+  group 'root'
+  mode '0644'
+end
+
 ### dependencies ###
 DEPENDENCIES = %w(
   bzip2
