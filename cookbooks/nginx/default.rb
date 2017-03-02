@@ -6,7 +6,9 @@ remote_file '/etc/yum.repos.d/nginx.repo' do
 end
 
 ### Install ###
-package 'nginx'
+package 'nginx' do
+  options '--disablerepo=* --enablerepo=nginx'
+end
 
 ### Service ###
 service 'nginx' do
