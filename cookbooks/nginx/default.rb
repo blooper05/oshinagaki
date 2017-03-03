@@ -11,10 +11,17 @@ package 'nginx' do
 end
 
 ### Configuration Files ###
-remote_file '/etc/nginx/nginx.conf' do
-  owner 'root'
-  group 'root'
-  mode '0644'
+CONF_FILES = %w(
+  /etc/nginx/nginx.conf
+  /etc/nginx/conf.d/default.conf
+).freeze
+
+CONF_FILES.each do |file|
+  remote_file file do
+    owner 'root'
+    group 'root'
+    mode '0644'
+  end
 end
 
 ### Service ###
