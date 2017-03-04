@@ -1,5 +1,6 @@
 COOKBOOKS = %w(
   base
+  certbot
   nginx
   ruby
 ).freeze
