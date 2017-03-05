@@ -1,5 +1,6 @@
+# frozen_string_literal: true
 ### Install ###
-BIN_FILE = '/usr/local/bin/certbot-auto'.freeze
+BIN_FILE = '/usr/local/bin/certbot-auto'
 
 http_request BIN_FILE do
   path BIN_FILE
@@ -9,19 +10,19 @@ http_request BIN_FILE do
 end
 
 ### Generate ###
-ADDRESS = ''.freeze
+ADDRESS = ''
 DOMAINS = %w(
 ).freeze
 
-OPTIONS = "-d #{DOMAINS.join(',')} --agree-tos -n -m #{ADDRESS} --debug".freeze
-COMMAND = "#{BIN_FILE} certonly #{OPTIONS}".freeze
+OPTIONS = "-d #{DOMAINS.join(',')} --agree-tos -n -m #{ADDRESS} --debug"
+COMMAND = "#{BIN_FILE} certonly #{OPTIONS}"
 
 execute "#{COMMAND} --standalone" do
   not_if "test -e /etc/letsencrypt/live/#{DOMAINS[0]}"
 end
 
 ### Update ###
-WWW_DIR = '/var/www'.freeze
+WWW_DIR = '/var/www'
 
 directory WWW_DIR do
   owner 'ec2-user'

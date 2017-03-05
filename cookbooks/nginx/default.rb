@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 ### Yum Repository ###
 remote_file '/etc/yum.repos.d/nginx.repo' do
   owner 'root'

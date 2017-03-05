@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 COOKBOOKS = %w(
   base
   ruby

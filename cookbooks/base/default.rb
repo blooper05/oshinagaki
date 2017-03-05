@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 ### Yum ###
 execute 'yum clean all'
 execute 'yum -y update'

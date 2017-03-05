@@ -1,6 +1,7 @@
+# frozen_string_literal: true
 ### rbenv ###
-RBENV_ROOT = '/usr/local/rbenv'.freeze
-RBENV_CONF = '/etc/profile.d/rbenv.conf.sh'.freeze
+RBENV_ROOT = '/usr/local/rbenv'
+RBENV_CONF = '/etc/profile.d/rbenv.conf.sh'
 
 git RBENV_ROOT do
   repository 'https://github.com/rbenv/rbenv.git'
@@ -46,7 +47,7 @@ DEPENDENCIES.each do |dependency|
 end
 
 ### Ruby ###
-VERSION = '2.4.0'.freeze
+VERSION = '2.4.0'
 
 execute 'rbenv install' do
   command "source #{RBENV_CONF} && rbenv install #{VERSION}"
