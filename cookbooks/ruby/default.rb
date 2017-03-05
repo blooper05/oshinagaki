@@ -8,9 +8,9 @@ git RBENV_ROOT do
 end
 
 remote_file RBENV_CONF do
+  mode '0644'
   owner 'root'
   group 'root'
-  mode '0644'
 end
 
 ### ruby-build ###
@@ -24,9 +24,9 @@ git "#{RBENV_ROOT}/plugins/rbenv-default-gems" do
 end
 
 remote_file "#{RBENV_ROOT}/default-gems" do
+  mode '0644'
   owner 'root'
   group 'root'
-  mode '0644'
 end
 
 ### dependencies ###
@@ -49,12 +49,10 @@ end
 ### Ruby ###
 VERSION = '2.4.0'
 
-execute 'rbenv install' do
-  command "source #{RBENV_CONF} && rbenv install #{VERSION}"
+execute "source #{RBENV_CONF} && rbenv install #{VERSION}" do
   not_if "source #{RBENV_CONF} && rbenv versions | grep #{VERSION}"
 end
 
-execute 'rbenv global' do
-  command "source #{RBENV_CONF} && rbenv global #{VERSION}"
+execute "source #{RBENV_CONF} && rbenv global #{VERSION}" do
   not_if "source #{RBENV_CONF} && rbenv version | grep #{VERSION}"
 end
