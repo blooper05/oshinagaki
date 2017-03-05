@@ -6,10 +6,17 @@ remote_file '/etc/yum.repos.d/nginx.repo' do
   group 'root'
 end
 
-### Install ###
-package 'nginx' do
-  options '--disablerepo=* --enablerepo=nginx'
+YUM_CONF = '/etc/yum.conf'
+OPTION   = 'exclude=nginx-all*'
+
+file YUM_CONF do
+  action :edit
+  block { |content| content << "\n#{OPTION}\n" }
+  not_if "grep #{OPTION} #{YUM_CONF}"
 end
+
+### Install ###
+package 'nginx'
 
 ### Configuration Files ###
 CONF_FILES = %w(
