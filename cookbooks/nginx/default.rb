@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 ### Yum Repository ###
 remote_file '/etc/yum.repos.d/nginx.repo' do
+  mode '0644'
   owner 'root'
   group 'root'
-  mode '0644'
 end
 
 ### Install ###
@@ -19,9 +19,9 @@ CONF_FILES = %w(
 
 CONF_FILES.each do |file|
   remote_file file do
+    mode '0644'
     owner 'root'
     group 'root'
-    mode '0644'
   end
 end
 
