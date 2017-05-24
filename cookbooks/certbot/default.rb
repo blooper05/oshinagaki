@@ -22,15 +22,15 @@ execute "#{COMMAND} --standalone" do
 end
 
 ### Update ###
-WWW_DIR = '/var/www'
+ROOT_DIR = '/var/www/application/public'
 
-directory WWW_DIR do
+directory ROOT_DIR do
   owner 'ec2-user'
   group 'ec2-user'
 end
 
-execute "#{COMMAND} --webroot -w #{WWW_DIR} --force-renewal" do
-  not_if "test -e #{WWW_DIR}/.well-known"
+execute "#{COMMAND} --webroot -w #{ROOT_DIR} --force-renewal" do
+  not_if "test -e #{ROOT_DIR}/.well-known"
 end
 
 ### Cron ###
