@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 ### Install ###
 BIN_FILE = '/usr/local/bin/certbot-auto'
 
@@ -11,8 +12,8 @@ end
 
 ### Generate ###
 ADDRESS = ''
-DOMAINS = %w(
-).freeze
+DOMAINS = %w[
+].freeze
 
 OPTIONS = "-d #{DOMAINS.join(',')} --agree-tos -n -m #{ADDRESS} --debug"
 COMMAND = "#{BIN_FILE} certonly #{OPTIONS}"

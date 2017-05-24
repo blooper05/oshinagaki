@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 ### rbenv ###
 RBENV_ROOT = '/usr/local/rbenv'
 RBENV_CONF = '/etc/profile.d/rbenv.conf.sh'
@@ -30,7 +31,7 @@ remote_file "#{RBENV_ROOT}/default-gems" do
 end
 
 ### dependencies ###
-DEPENDENCIES = %w(
+DEPENDENCIES = %w[
   bzip2
   gcc
   gdbm-devel
@@ -40,7 +41,7 @@ DEPENDENCIES = %w(
   openssl-devel
   readline-devel
   zlib-devel
-).freeze
+].freeze
 
 DEPENDENCIES.each do |dependency|
   package dependency

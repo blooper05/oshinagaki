@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 ### Yum Repository ###
 remote_file '/etc/yum.repos.d/nginx.repo' do
   mode '0644'
@@ -19,10 +20,10 @@ end
 package 'nginx'
 
 ### Configuration Files ###
-CONF_FILES = %w(
+CONF_FILES = %w[
   /etc/nginx/nginx.conf
   /etc/nginx/conf.d/default.conf
-).freeze
+].freeze
 
 CONF_FILES.each do |file|
   remote_file file do
@@ -34,5 +35,5 @@ end
 
 ### Service ###
 service 'nginx' do
-  action %i(enable start)
+  action %i[enable start]
 end

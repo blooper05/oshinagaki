@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'spec_helper'
 
 describe command('printenv AWS_DEFAULT_REGION') do

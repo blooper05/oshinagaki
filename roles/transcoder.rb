@@ -1,8 +1,9 @@
 # frozen_string_literal: true
-COOKBOOKS = %w(
+
+COOKBOOKS = %w[
   base
   ruby
-).freeze
+].freeze
 
 COOKBOOKS.each do |cookbook|
   include_recipe "../cookbooks/#{cookbook}/default.rb"
