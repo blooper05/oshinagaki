@@ -1,0 +1,6 @@
+[remi]
+name=Remi's RPM repository for Enterprise Linux 6 - $basearch
+baseurl=http://rpms.remirepo.net/enterprise/6/remi/$basearch/
+gpgcheck=0
+enabled=1
+priority=1

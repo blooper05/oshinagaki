@@ -2,6 +2,7 @@
 
 COOKBOOKS = %w[
   base
+  redis
   ruby
 ].freeze
 
