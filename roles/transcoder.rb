@@ -2,6 +2,7 @@
 
 COOKBOOKS = %w[
   base
+  ffmpeg
   redis
   ruby
 ].freeze
