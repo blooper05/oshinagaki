@@ -30,7 +30,7 @@ remote_file "#{RBENV_ROOT}/default-gems" do
   group 'root'
 end
 
-### dependencies ###
+### Dependencies ###
 DEPENDENCIES = %w[
   bzip2
   gcc
