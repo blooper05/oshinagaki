@@ -38,7 +38,7 @@ YASM_COMMANDS = [
   %(./configure --prefix="#{PREFIX_PATH}" --bindir="#{BIN_PATH}"),
   'make -j$(nproc)',
   'make install',
-  'make distclean'
+  'make distclean',
 ].freeze
 
 git YASM_SRC_PATH do
@@ -62,7 +62,7 @@ X264_COMMANDS = [
     --enable-static),
   'make -j$(nproc)',
   'make install',
-  'make distclean'
+  'make distclean',
 ].freeze
 
 git X264_SRC_PATH do
@@ -84,7 +84,7 @@ AAC_COMMANDS = [
   %(./configure --prefix="#{PREFIX_PATH}" --disable-shared),
   'make -j$(nproc)',
   'make install',
-  'make distclean'
+  'make distclean',
 ].freeze
 
 git AAC_SRC_PATH do
@@ -115,7 +115,7 @@ FFMPEG_COMMANDS = [
   'make -j$(nproc)',
   'make install',
   'make distclean',
-  'hash -r'
+  'hash -r',
 ].freeze
 
 git FFMPEG_SRC_PATH do
