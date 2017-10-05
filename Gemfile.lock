@@ -48,15 +48,15 @@ GEM
       rainbow (>= 2.2.2, < 3.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
-    ruby-progressbar (1.8.3)
+    ruby-progressbar (1.9.0)
     schash (0.1.2)
-    serverspec (2.40.0)
+    serverspec (2.41.0)
       multi_json
       rspec (~> 3.0)
       rspec-its
-      specinfra (~> 2.68)
+      specinfra (~> 2.72)
     sfl (2.3)
-    specinfra (2.71.2)
+    specinfra (2.72.0)
       net-scp
       net-ssh (>= 2.7, < 5.0)
       net-telnet
