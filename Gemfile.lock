@@ -24,7 +24,7 @@ GEM
     powerpack (0.1.1)
     rainbow (2.2.2)
       rake
-    rake (12.1.0)
+    rake (12.2.1)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
@@ -50,7 +50,7 @@ GEM
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.9.0)
     schash (0.1.2)
-    serverspec (2.41.1)
+    serverspec (2.41.2)
       multi_json
       rspec (~> 3.0)
       rspec-its
