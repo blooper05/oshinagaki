@@ -14,6 +14,11 @@ remote_file RBENV_CONF do
   group 'root'
 end
 
+execute 'src/configure && make -C src' do
+  cwd RBENV_ROOT
+  not_if "test -e #{RBENV_ROOT}/src/Makefile"
+end
+
 ### ruby-build ###
 git "#{RBENV_ROOT}/plugins/ruby-build" do
   repository 'https://github.com/sstephenson/ruby-build.git'
