@@ -48,7 +48,7 @@ DEPENDENCIES.each do |dependency|
 end
 
 ### Ruby ###
-VERSION = '2.4.1'
+VERSION = '2.5.0'
 
 execute "source #{RBENV_CONF} && rbenv install #{VERSION}" do
   not_if "source #{RBENV_CONF} && rbenv versions | grep #{VERSION}"
