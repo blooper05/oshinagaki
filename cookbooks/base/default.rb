@@ -47,3 +47,15 @@ package 'chrony'
 service 'chronyd' do
   action %i[enable start]
 end
+
+### aws-mon-linux ###
+BIN_FILE = '/usr/local/bin/aws-mon.sh'
+
+http_request BIN_FILE do
+  path BIN_FILE
+  mode '0775'
+  url 'https://raw.githubusercontent.com/moomindani/aws-mon-linux/master/aws-mon.sh'
+  not_if "test -e #{BIN_FILE}"
+end
+
+# TODO: cron
