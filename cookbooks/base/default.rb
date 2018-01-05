@@ -59,4 +59,8 @@ http_request BIN_FILE do
   not_if "test -e #{BIN_FILE}"
 end
 
-# TODO: cron
+remote_file '/etc/cron.d/aws-mon-linux' do
+  mode '0644'
+  owner 'root'
+  group 'root'
+end

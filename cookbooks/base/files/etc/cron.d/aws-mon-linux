@@ -1,0 +1,1 @@
+*/5 * * * * root /usr/local/bin/aws-mon.sh --all-items --disk-path=/ --from-cron
