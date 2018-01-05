@@ -99,7 +99,7 @@ AAC_COMMANDS.each do |command|
 end
 
 ### FFmpeg ###
-FFMPEG_GIT_URL  = 'http://source.ffmpeg.org/git/ffmpeg.git'
+FFMPEG_GIT_URL  = 'https://git.videolan.org/git/ffmpeg.git'
 FFMPEG_SRC_PATH = "#{SRC_PATH}/ffmpeg"
 FFMPEG_COMMANDS = [
   %(./configure \
