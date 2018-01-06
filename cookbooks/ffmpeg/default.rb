@@ -1,12 +1,5 @@
 # frozen_string_literal: true
 
-### Yum Repository ###
-remote_file '/etc/yum.repos.d/nasm.repo' do
-  mode '0644'
-  owner 'root'
-  group 'root'
-end
-
 ### Dependencies ###
 DEPENDENCIES = %w[
   autoconf
@@ -16,7 +9,6 @@ DEPENDENCIES = %w[
   git
   libtool
   make
-  nasm
   pkgconfig
   zlib-devel
 ].freeze
@@ -30,6 +22,15 @@ BIN_PATH    = '/usr/local/bin'
 PREFIX_PATH = '/usr/local/src/ffmpeg_build'
 SRC_PATH    = '/usr/local/src/ffmpeg_sources'
 
+### NASM ###
+remote_file '/etc/yum.repos.d/nasm.repo' do
+  mode '0644'
+  owner 'root'
+  group 'root'
+end
+
+package 'nasm'
+
 ### Yasm ###
 YASM_GIT_URL  = 'https://github.com/yasm/yasm.git'
 YASM_SRC_PATH = "#{SRC_PATH}/yasm"
@@ -38,7 +39,6 @@ YASM_COMMANDS = [
   %(./configure --prefix="#{PREFIX_PATH}" --bindir="#{BIN_PATH}"),
   'make -j$(nproc)',
   'make install',
-  'make distclean',
 ].freeze
 
 git YASM_SRC_PATH do
@@ -56,13 +56,13 @@ end
 X264_GIT_URL  = 'https://git.videolan.org/git/x264.git'
 X264_SRC_PATH = "#{SRC_PATH}/x264"
 X264_COMMANDS = [
-  %(./configure \
+  %(PKG_CONFIG_PATH="#{PREFIX_PATH}/lib/pkgconfig" \
+    ./configure \
     --prefix="#{PREFIX_PATH}" \
     --bindir="#{BIN_PATH}" \
     --enable-static),
   'make -j$(nproc)',
   'make install',
-  'make distclean',
 ].freeze
 
 git X264_SRC_PATH do
@@ -84,7 +84,6 @@ AAC_COMMANDS = [
   %(./configure --prefix="#{PREFIX_PATH}" --disable-shared),
   'make -j$(nproc)',
   'make install',
-  'make distclean',
 ].freeze
 
 git AAC_SRC_PATH do
@@ -102,19 +101,21 @@ end
 FFMPEG_GIT_URL  = 'https://git.videolan.org/git/ffmpeg.git'
 FFMPEG_SRC_PATH = "#{SRC_PATH}/ffmpeg"
 FFMPEG_COMMANDS = [
-  %(./configure \
+  %(PKG_CONFIG_PATH="#{PREFIX_PATH}/lib/pkgconfig" \
+    ./configure \
     --prefix="#{PREFIX_PATH}" \
-    --extra-cflags="-I#{PREFIX_PATH}/include" \
-    --extra-ldflags="-L#{PREFIX_PATH}/lib -ldl" \
-    --bindir="#{BIN_PATH}" \
     --pkg-config-flags="--static" \
+    --extra-cflags="-I#{PREFIX_PATH}/include" \
+    --extra-ldflags="-L#{PREFIX_PATH}/lib" \
+    --extra-libs=-lpthread \
+    --extra-libs=-lm \
+    --bindir="#{BIN_PATH}" \
     --enable-gpl \
-    --enable-nonfree \
     --enable-libfdk_aac \
-    --enable-libx264),
+    --enable-libx264 \
+    --enable-nonfree),
   'make -j$(nproc)',
   'make install',
-  'make distclean',
   'hash -r',
 ].freeze
 
