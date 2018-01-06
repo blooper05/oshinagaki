@@ -35,4 +35,8 @@ execute "#{COMMAND} --webroot -w #{ROOT_DIR} --force-renewal" do
 end
 
 ### Cron ###
-# TODO
+remote_file '/etc/cron.d/certbot' do
+  mode '0644'
+  owner 'root'
+  group 'root'
+end
